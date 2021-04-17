@@ -1,54 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 
-namespace Tuwaiq
+namespace Fatimah
 {
     class Program
     {
-      
         static void Main(string[] args)
         {
-            
+            String s = "#طويق #الاتحاد السعودي @حساب @الاتحاد";
+            Tokenizer(s);
+        }
+        static void Tokenizer(string twitter)
+        {
+            int countHash = 0;
+            int countAt = 0;
 
-            string tweet = "هافنق فن ان طويق #مرح #فرح #تسلية @اليوم";
-            List<string> found = new List<string>();
-            foreach (var item in tweet.Split(' '))
+            foreach (String item in twitter.Split(' '))
             {
                 if (item.StartsWith("#") || item.StartsWith("@"))
                 {
-                    found.Add(item);
-                }
-
-            }
-            foreach (var item in found)
-            {
-                Console.WriteLine(item);
-            }
-
-            countTweet(found);
-
-
-        }
-        static void countTweet(List<string> arr)
-        {
-            int count_h = 0;
-            int count_m = 0;
-
-            foreach (var item in arr)
-            {
-                if (item.StartsWith("#"))
-                {
-                    count_h++;
-                }
-                else if (item.StartsWith("@"))
-                {
-                    count_m++;
-
+                    Console.WriteLine(item);
+                    if (item.StartsWith("#"))
+                    {
+                        countHash++;
+                    }
+                    else if (item.StartsWith("@"))
+                    {
+                        countAt++;
+                    }
                 }
             }
-            Console.WriteLine("The number of hashtags: " + count_h);
-            Console.WriteLine("The number of mentions: " + count_m);
+            Console.WriteLine("The number of hashtags: " + countHash);
+            Console.WriteLine("The number of mentions: " + countAt);
         }
     }
-
 }
